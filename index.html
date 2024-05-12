@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Wikipedia Viewer</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.2/angular-animate.min.js"></script>
+	<script src="script.js"></script>
+
+	<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+	<header>
+		<h1>Wikipedia Viewer</h1>
+	</header>
+	
+	<div ng-app="WikiApp" ng-controller="WikiController">
+		<form ng-submit="search()">
+			<input type="text" ng-id="searchTxt" placeholder="type your search here"/>
+
+			<button id='newSearch'>New Search</button>
+			
+			<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+				<button>Random Article</button>
+			</a>
+		</form>
+		
+		<div class="wrapper">
+			<ul>
+				<a ng-href="{{result.page}}" target="_blank" ng-repeat="result in results">
+					<li>
+						<h1>{{result.title}}</h1>
+						<p>{{result.body}}</p>
+					</li>
+				</a>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
